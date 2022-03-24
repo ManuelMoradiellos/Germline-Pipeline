@@ -1,0 +1,48 @@
+## GERMLINE PIPELINE CONFIG.YAML
+#Use this file to add parameters to the germline pipeline.
+
+# Name the used chromosomes --> used for wildcards 
+CHRS : ["chr1", "chr2", "chr3", "chr4", "chr5", "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13", "chr14","chr15","chr16","chr17","chr18","chr19","chr20","chr21","chr22"]
+
+# Common thresholds for PCA 
+common_threshold : [0.05, 0.01]
+
+# Rare AF threshold for rare variants selection.
+rare_threshold : [0.001]
+
+# Low qual file obtained from TCGA
+TCGA_lowqual_samples : "files/bad_samples.txt"
+
+# OUTPUT directory
+outdir : "out/"
+
+# Do PCA option
+doPCA : False
+
+# Pathogenic options selected to create wildcards
+pathogenic : ["clinvar", "plof", "delmis"]
+delmis_method: "MetaLR"
+
+# Functional filter 
+functional_filter : ["exonic", "splicing", "exonic;splicing"]
+
+# Pop info
+pop_info : "files/TCGA_barcode_population_PanCancerSupp_PopInfoPAM.tsv"
+
+# Pop count
+pop_counts : "files/new_pop_table_normal_samples.RDS" 
+
+# All samples ID
+samples_ID: "files/samples_ID.txt"
+
+# PEXT files directory
+PEXT:
+        PEXT_dir: "/storage/scratch01/users/lgjimeno/tcga_pipeline/resources/splitted/"
+        PEXT_expression_threshold: 0.1
+        PEXT_equivalences: "files/cancer_types_matching.csv"
+
+# Metadata information:
+TCGA_metadata: "files/TCGA_pancancer_metadata.R.csv"
+
+VEP_pLOF: "filesgermline.TCGAqc_filt.GQ.DP.NSY.VAF.AD.BCD.PASS.TCGA_AF.FUNC.sorted.plof.rare_0.001.header.vep_annotated.txt"
+
